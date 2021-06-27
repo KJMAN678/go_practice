@@ -1,3 +1,7 @@
+package main
+
+import "fmt"
+
 // General is all type data.
 type General interface{}
 
@@ -13,6 +17,7 @@ type NData struct {
 	Data int
 }
 
+// Set is NData method.
 func (nd *NData) Set(nm string, g General) GData {
 	nd.Name = nm
 	nd.Data = g.(int)
@@ -45,9 +50,9 @@ func (sd *SData) Print() {
 func main() {
 	var data = []GData{}
 	data = append(data, new(NData).Set("Taro", 123))
-	data = append(data, new(NData).Set("Jiro", "hello!"))
+	data = append(data, new(SData).Set("Jiro", "hello!"))
 	data = append(data, new(NData).Set("Hanako", 98700))
-	data = append(data, new(NData).Set("Sachiko", "happy?"))
+	data = append(data, new(SData).Set("Sachiko", "happy?"))
 	for _, ob := range data {
 		ob.Print()
 	}
